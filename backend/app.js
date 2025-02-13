@@ -15,8 +15,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.get("/api/greet", (req, res) => {
+    res.json({ message: "Welcome to the ExpressSlot Machine API🎰!" });
+});
+
+const gameRoutes = require("./routes/game");
+const depositRoutes = require("./routes/deposit");
+
+app.use("/api", gameRoutes);
+app.use("/api", depositRoutes);
+
 module.exports = app;
 
-app.get("/api/greet", (req, res) => {
-    res.json({ message: "Welcome to Slot Machine!" });
-});

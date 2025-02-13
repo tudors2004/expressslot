@@ -10,9 +10,14 @@ function Home(){
             .catch(err => console.error(err));
     }, []);
     return (
-        <div>
-            <h1>{message}</h1>
-            <Link to={"/deposit"}>Press to start</Link>
+        <div className={"Home"}>
+            <video autoPlay muted loop id="background-home-video" className={"video"}>
+                <source src="/homeloopvideo.mp4" type={"video/mp4"} />
+                Your browser does not support the video tag.
+            </video>
+            <div className={"overlay"}><h1>{message}</h1>
+                <Link to={"/deposit"} id={"guest"}>Continue as guest</Link>
+            </div>
         </div>
     );
 
